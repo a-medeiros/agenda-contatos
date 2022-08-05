@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-input {
+  margin: 5px 0px 15px;
+}
+
+.input {
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  width: 250px;
+}
+
+.container-button {
+  padding: 5px 0px;
+}
+
+.container-icon {
+  padding: 10px;
+}

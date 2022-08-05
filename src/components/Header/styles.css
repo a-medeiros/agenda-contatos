@@ -1,0 +1,13 @@
+.navbar {
+  height: 8vh;
+  background-color: #3F51B5;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-size: 27px;
+  padding: 0px 20px;
+  margin: 0px;
+}

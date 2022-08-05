@@ -1,0 +1,9 @@
+.container-cep {
+  display: flex;
+  width: 200px;
+}
+
+.text {
+  margin: 0px;
+  padding: 5px 0px;
+}

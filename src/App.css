@@ -1,0 +1,35 @@
+.container {
+  min-height: 92vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container-contacts {
+  width: 900px;
+}
+
+.contacts-list {
+  list-style-type: none;
+}
+
+.contact-list-header {
+  display: grid;
+  grid-template-columns: 330px 200px 370px;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 330px 200px 370px;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 7px 0px;
+}
+
+.contact-name {
+  font-size: 16px;
+}
+
+.contact-number {
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+}
