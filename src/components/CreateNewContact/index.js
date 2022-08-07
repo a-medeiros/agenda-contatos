@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './styles.css';
-import { Modal, Button, Input } from 'antd';
+import { Modal, Button, Input, message } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import SearchAddress from '../SearchAddress';
 
@@ -15,6 +15,10 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
   ])
   const [cep, setCep] = useState('');
   const [wantedAddress, setWantedAddress] = useState(null);
+
+  function success() {
+    message.success('Contato foi criado!');
+  };
 
   function handleCancel() {
     setIsModalVisible(false);
@@ -71,6 +75,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
       telephone: phoneNumber,
       address: addresses
     }]);
+    success();
 
     setName('');
     setLastName('');
