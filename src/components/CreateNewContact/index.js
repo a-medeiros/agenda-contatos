@@ -67,6 +67,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
     setContacts([...contacts, {
       name,
       lastName,
+      fullName: `${name} ${lastName}`,
       telephone: phoneNumber,
       address: addresses
     }]);

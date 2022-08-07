@@ -14,12 +14,14 @@
 
 .contact-list-header {
   display: grid;
-  grid-template-columns: 330px 200px 370px;
+  grid-template-columns: 300px 230px 370px;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 7px 0px;
 }
 
 .contact {
   display: grid;
-  grid-template-columns: 330px 200px 370px;
+  grid-template-columns: 300px 230px 370px;
   border-bottom: 1px solid #E0E0E0;
   padding: 7px 0px;
 }
@@ -32,4 +34,9 @@
   font-size: 16px;
   margin: 0px;
   padding: 0px;
+}
+
+.container-search {
+  width: 500px;
+  margin: 0px 0px 10px;
 }
