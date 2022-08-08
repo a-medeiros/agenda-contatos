@@ -68,13 +68,6 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
   function onSubmit(e) {
     e.preventDefault();
     let contactsData = JSON.parse(localStorage.getItem('contacts')) || [];
-    setContacts([...contacts, {
-      name,
-      lastName,
-      fullName: `${name} ${lastName}`,
-      telephone: phoneNumber,
-      address: addresses
-    }]);
     contactsData.push({
       name,
       lastName,
@@ -82,6 +75,10 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
       telephone: phoneNumber,
       address: addresses
     });
+    contactsData.sort((name1, name2) => {
+      return name1.fullName < name2.fullName ? -1 : name1.fullName > name2.fullName ? 1 : 0;
+    });
+    setContacts(contactsData);
     localStorage.setItem('contacts', JSON.stringify(contactsData));
 
     success();

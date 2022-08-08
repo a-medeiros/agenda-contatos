@@ -14,6 +14,9 @@ function App() {
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem('contacts')) || [];
+    data.sort((name1, name2) => {
+      return name1.fullName < name2.fullName ? -1 : name1.fullName > name2.fullName ? 1 : 0;
+    });
     setContacts(data);
   }, []);
 
