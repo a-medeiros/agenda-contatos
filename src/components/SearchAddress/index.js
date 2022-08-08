@@ -3,13 +3,25 @@ import { Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import './styles.css';
 
-export default function SearchAddress({ cep, setCep, wantedAddress, setWantedAddress }) {
+export default function SearchAddress({
+  cep,
+  setCep,
+  wantedAddress,
+  setWantedAddress,
+  error,
+  setError
+}) {
   function getAddressByCEP(cep) {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then(res => res.json())
       .then(data => {
-        setWantedAddress(`${data.logradouro}, ${data.localidade}, ${data.uf}`)
+        setWantedAddress(`${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}, ${data.cep}`)
         setCep('');
+        setError('');
+      })
+      .catch(() => {
+        setWantedAddress('');
+        setError('O CEP não existe ou ele está incorreto.')
       });
   }
 
@@ -22,10 +34,17 @@ export default function SearchAddress({ cep, setCep, wantedAddress, setWantedAdd
           value={cep}
           onChange={(e) => setCep(e.target.value)}
         />
-        <Button type="primary" icon={<SearchOutlined />} onClick={() => getAddressByCEP(cep)} />
+        {cep === '' ? (
+          <Button type="primary" disabled icon={<SearchOutlined />} onClick={() => getAddressByCEP(cep)} />
+        ) : (
+          <Button type="primary" icon={<SearchOutlined />} onClick={() => getAddressByCEP(cep)} />
+        )}
       </div>
       {wantedAddress && (
         <p className="text">O endereço é: <strong>{wantedAddress}</strong></p>
+      )}
+      {error && (
+        <p className="text">{error}</p>
       )}
     </>
   )

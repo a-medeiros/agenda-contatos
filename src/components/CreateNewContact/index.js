@@ -15,6 +15,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
   ])
   const [cep, setCep] = useState('');
   const [wantedAddress, setWantedAddress] = useState(null);
+  const [error, setError] = useState('');
 
   function success() {
     message.success('Contato foi criado!');
@@ -89,6 +90,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
     setCep('');
     setWantedAddress(null);
     setIsModalVisible(false);
+    setError('');
   }
 
   return (
@@ -144,6 +146,8 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
               setCep={setCep}
               wantedAddress={wantedAddress}
               setWantedAddress={setWantedAddress}
+              error={error}
+              setError={setError}
             />
 
             {addresses.map((address, index) => (

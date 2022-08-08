@@ -21,6 +21,7 @@
 
 .contact {
   display: grid;
+  align-items: center;
   grid-template-columns: 300px 230px 370px;
   border-bottom: 1px solid #F5F5F5;
   padding: 13px 0px;
