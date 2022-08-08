@@ -69,12 +69,21 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
   function onSubmit(e) {
     e.preventDefault();
     let contactsData = JSON.parse(localStorage.getItem('contacts')) || [];
+
+    const newPhoneNumberList = phoneNumber.filter((phone) => {
+      return phone.number !== ''
+    });
+
+    const newAddressesList = addresses.filter((address) => {
+      return address.address !== '';
+    });
+
     contactsData.push({
       name,
       lastName,
       fullName: `${name} ${lastName}`,
-      telephone: phoneNumber,
-      address: addresses
+      telephone: newPhoneNumberList,
+      address: newAddressesList
     });
     contactsData.sort((name1, name2) => {
       return name1.fullName < name2.fullName ? -1 : name1.fullName > name2.fullName ? 1 : 0;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import CreateNewContact from './components/CreateNewContact';
+import Contact from './components/Contact';
 import { UserAddOutlined } from '@ant-design/icons';
 import { Button, Select } from 'antd';
 import './App.css';
@@ -9,8 +10,10 @@ const { Option } = Select;
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isContactModalVisible, setIsContactModalVisible] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [wantedContact, setWantedContact] = useState('');
+  const [selectedContact, setSelectedContact] = useState(null);
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem('contacts')) || [];
@@ -19,6 +22,15 @@ function App() {
     });
     setContacts(data);
   }, []);
+
+  function handleSelectedContact(name, phoneNumbers, addresses) {
+    setSelectedContact({
+      name,
+      phoneNumbers,
+      addresses
+    })
+    setIsContactModalVisible(true)
+  }
 
   return (
     <>
@@ -77,12 +89,27 @@ function App() {
                     return contact.fullName.includes(wantedContact);
                   }
                 }).map((contact) => (
-                  <li className="contact">
-                    <p className="contact-value">{contact.name} {contact.lastName}</p>
-                    <p className="contact-value contact-header-hide-number">{contact.telephone[0].number}</p>
-                    <p className="contact-value contact-header-hide-address">{contact.address[0].address}</p>
-                  </li>
+                  <>
+                    <li className="contact" onClick={() => handleSelectedContact(contact.fullName, contact.telephone, contact.address)}>
+                      <p className="contact-value">{contact.name} {contact.lastName}</p>
+                      {contact.telephone.length > 0 ? (
+                        <p className="contact-value contact-header-hide-number">{contact.telephone[0].number}</p>
+                      ) : (
+                        <p />
+                      )}
+                      {contact.address.length > 0 ? (
+                        <p className="contact-value contact-header-hide-address">{contact.address[0].address}</p>
+                      ) : (
+                        <p />
+                      )}
+                    </li>
+                  </>
                 ))}
+                <Contact
+                  isContactModalVisible={isContactModalVisible}
+                  setIsContactModalVisible={setIsContactModalVisible}
+                  selectedContact={selectedContact}
+                />
               </div>
             )}
           </ul>
