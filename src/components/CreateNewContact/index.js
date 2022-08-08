@@ -44,7 +44,6 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
   function removePhoneNumberField(index) {
     const list = [...phoneNumber];
     list.splice(index, 1);
-    console.log(list);
     setPhoneNumber(list);
   }
 
@@ -68,6 +67,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
   // Submit
   function onSubmit(e) {
     e.preventDefault();
+    let contactsData = JSON.parse(localStorage.getItem('contacts')) || [];
     setContacts([...contacts, {
       name,
       lastName,
@@ -75,8 +75,16 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
       telephone: phoneNumber,
       address: addresses
     }]);
-    success();
+    contactsData.push({
+      name,
+      lastName,
+      fullName: `${name} ${lastName}`,
+      telephone: phoneNumber,
+      address: addresses
+    });
+    localStorage.setItem('contacts', JSON.stringify(contactsData));
 
+    success();
     setName('');
     setLastName('');
     setPhoneNumber([{ number: '' }]);

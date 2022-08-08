@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import CreateNewContact from './components/CreateNewContact';
 import { UserAddOutlined } from '@ant-design/icons';
@@ -11,6 +11,11 @@ function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [wantedContact, setWantedContact] = useState('');
+
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem('contacts')) || [];
+    setContacts(data);
+  }, []);
 
   return (
     <>
@@ -45,7 +50,6 @@ function App() {
                   >
                     {contact.fullName}
                   </Option>
-
                 )
               })}
             </Select>
