@@ -1,6 +1,7 @@
 .container-cep {
   display: flex;
   width: 200px;
+  padding-bottom: 20px;
 }
 
 .text {

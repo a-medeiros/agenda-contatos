@@ -115,6 +115,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
             {phoneNumber.map((phone, index) => (
               <div className="input">
                 <Input
+                  type="number"
                   style={{ width: '85%' }}
                   value={phone.number}
                   onChange={(e) => changeSelectedPhoneNumber(e, index)}
@@ -151,6 +152,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
                   style={{ width: '85%' }}
                   value={address.address}
                   onChange={(e) => changeSelectedAddress(e, index)}
+                  placeholder="Endereço"
                 />
                 {index !== 0 && (
                   <div className="container-icon">

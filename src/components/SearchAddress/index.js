@@ -17,7 +17,11 @@ export default function SearchAddress({ cep, setCep, wantedAddress, setWantedAdd
     <>
       <p className="text">Não sabe o endereço? Digite o CEP e descubra:</p>
       <div className="container-cep">
-        <Input value={cep} onChange={(e) => setCep(e.target.value)} placeholder="CEP" />
+        <Input
+          type="number"
+          value={cep}
+          onChange={(e) => setCep(e.target.value)}
+        />
         <Button type="primary" icon={<SearchOutlined />} onClick={() => getAddressByCEP(cep)} />
       </div>
       {wantedAddress && (
