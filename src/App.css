@@ -15,22 +15,23 @@
 .contact-list-header {
   display: grid;
   grid-template-columns: 300px 230px 370px;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #F5F5F5;
   padding: 7px 0px;
 }
 
 .contact {
   display: grid;
   grid-template-columns: 300px 230px 370px;
-  border-bottom: 1px solid #E0E0E0;
-  padding: 7px 0px;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 13px 0px;
 }
 
-.contact-name {
-  font-size: 16px;
+.contact:hover {
+  background-color: #F5F5F5;
+  cursor: pointer;
 }
 
-.contact-number {
+.contact-value {
   font-size: 16px;
   margin: 0px;
   padding: 0px;
@@ -39,4 +40,41 @@
 .container-search {
   width: 500px;
   margin: 0px 0px 10px;
+}
+
+.contact-header-hide {
+  display: block;
+}
+
+@media screen and (max-width: 1010px) {
+  .container-contacts {
+    width: 100%;
+    padding: 0px 40px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .contact-header-hide-address {
+    display: none;
+  }
+
+  .contact,
+  .contact-list-header {
+    grid-template-columns: 300px 300px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .contact-header-hide-number {
+    display: none;
+  }
+
+  .container-search {
+    width: 100%;
+  }
+
+  .contact,
+  .contact-list-header {
+    grid-template-columns: auto;
+  }
 }

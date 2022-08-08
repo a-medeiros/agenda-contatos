@@ -67,8 +67,8 @@ function App() {
               <div>
                 <li className="contact-list-header">
                   <h3>Nome</h3>
-                  <h3>Número de Telefone</h3>
-                  <h3>Endereço</h3>
+                  <h3 className='contact-header-hide-number'>Número de Telefone</h3>
+                  <h3 className='contact-header-hide-address'>Endereço</h3>
                 </li>
                 {contacts.filter((contact) => {
                   if (!wantedContact) {
@@ -78,9 +78,9 @@ function App() {
                   }
                 }).map((contact) => (
                   <li className="contact">
-                    <h3 className="contact-name">{contact.name} {contact.lastName}</h3>
-                    <p className="contact-number">{contact.telephone[0].number}</p>
-                    <p className="contact-number">{contact.address[0].address}</p>
+                    <p className="contact-value">{contact.name} {contact.lastName}</p>
+                    <p className="contact-value contact-header-hide-number">{contact.telephone[0].number}</p>
+                    <p className="contact-value contact-header-hide-address">{contact.address[0].address}</p>
                   </li>
                 ))}
               </div>

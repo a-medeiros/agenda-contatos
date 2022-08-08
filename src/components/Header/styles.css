@@ -11,3 +11,9 @@
   padding: 0px 20px;
   margin: 0px;
 }
+
+@media screen and (max-width: 500px) {
+  .logo {
+    font-size: 23px;
+  }
+}
