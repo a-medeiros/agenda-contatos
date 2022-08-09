@@ -29,6 +29,7 @@ export default function CreateNewContact({ isModalVisible, setIsModalVisible, co
     setAddresses([{ address: '' }]);
     setCep('');
     setWantedAddress(null);
+    setError('');
   };
 
   // Phone Number

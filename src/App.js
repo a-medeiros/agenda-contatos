@@ -95,12 +95,12 @@ function App() {
                       {contact.telephone.length > 0 ? (
                         <p className="contact-value contact-header-hide-number">{contact.telephone[0].number}</p>
                       ) : (
-                        <p />
+                        <p className="contact-value contact-header-hide-number" />
                       )}
                       {contact.address.length > 0 ? (
                         <p className="contact-value contact-header-hide-address">{contact.address[0].address}</p>
                       ) : (
-                        <p />
+                        <p className="contact-value contact-header-hide-address" />
                       )}
                     </li>
                   </>

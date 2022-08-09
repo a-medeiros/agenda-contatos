@@ -15,13 +15,19 @@ export default function SearchAddress({
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then(res => res.json())
       .then(data => {
-        setWantedAddress(`${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}, ${data.cep}`)
-        setCep('');
-        setError('');
+        if (data.erro) {
+          setError('CEP não existe ou ele está incorreto.');
+          setCep('');
+          setWantedAddress('');
+        } else {
+          setWantedAddress(`${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}, ${data.cep}`)
+          setCep('');
+          setError('');
+        }
       })
       .catch(() => {
         setWantedAddress('');
-        setError('O CEP não existe ou ele está incorreto.')
+        setError('CEP não existe ou ele está incorreto.')
       });
   }
 
